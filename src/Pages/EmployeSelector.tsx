@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import ToggleButtonGroup from "../Components/ToggleButtonGroup";
+import { Form, Link } from "react-router-dom";
 
 const MyComponent: React.FC = () => {
   let [treatments, setTreatments] = useState([
     {
-      name: "Dameklip",
-      price: 460,
+      image: "/frisør.png",
+      name: "Bodil",
       selected: true,
     },
     {
-      name: "Behandling 1",
-      price: 460,
-    },
-    {
-      name: "Behandling 1",
-      price: 460,
+      image: "/frisør.png",
+      name: "Dorte",
     },
   ]);
 
   return (
-    <form>
+    <Form method="post" action="/calendar">
       <div className="card shadow mx-auto w-max-content">
         <div className="card-body">
           <h1 className="mb-0">Vælg behandling</h1>
@@ -28,37 +25,30 @@ const MyComponent: React.FC = () => {
 
       <ToggleButtonGroup elements={treatments} name="behandling">
         {(treatment) => (
-          <>
-            <div className="col">{treatment.name}</div>
-            <div className="col-auto">kr. {treatment.price}</div>
-          </>
-        )}
-      </ToggleButtonGroup>
-
-      <div className="card shadow mx-auto mt-5 w-max-content">
-        <div className="card-body">
-          <h2 className="mb-0">Vælg tillæg</h2>
-        </div>
-      </div>
-
-      <ToggleButtonGroup elements={treatments} name="tillæg">
-        {(treatment) => (
-          <>
-            <div className="col">{treatment.name}</div>
-            <div className="col-auto">kr. {treatment.price}</div>
-          </>
+          <div className="d-flex align-items-center">
+            <img src={treatment.image} alt="Frisør" />
+            <div className="ms-4 fs-3">{treatment.name}</div>
+          </div>
         )}
       </ToggleButtonGroup>
 
       <div className="container mt-3 w-max-content">
+        <Link
+          to={"/calendar"}
+          className="btn btn-primary rounded-pill mt-5 Start-btn"
+        >
+          Bestil ny tid
+        </Link>
+        {/* TODO: submit form
         <button
+          to={"/calendar"}
           className="btn btn-primary rounded-pill mt-5 Start-btn"
           type="submit"
         >
           Bestil ny tid
-        </button>
+        </button> */}
       </div>
-    </form>
+    </Form>
   );
 };
 

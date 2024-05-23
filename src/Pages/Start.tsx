@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const MyComponent: React.FC = () => {
   return (
@@ -15,19 +16,28 @@ const MyComponent: React.FC = () => {
       </div>
       <div className="w-max-content container mt-3">
         <div className="row">
-          <button className="btn btn-primary rounded-pill mt-1 Start-btn">
+          <Link
+            className="btn btn-primary rounded-pill mt-1 Start-btn"
+            to={"/treatment"}
+          >
             Bestil ny tid
-          </button>
+          </Link>
         </div>
         <div className="row">
-          <button className="btn btn-primary rounded-pill mt-1 Start-btn">
+          <Link
+            className="btn btn-primary rounded-pill mt-1 Start-btn"
+            to={"/bookings"}
+          >
             Se tidligere tider
-          </button>
+          </Link>
         </div>
         <div className="row">
-          <button className="btn btn-primary rounded-pill mt-3 Start-btn">
+          <Link
+            className="btn btn-primary rounded-pill mt-1 Start-btn"
+            to={"/account"}
+          >
             Konto
-          </button>
+          </Link>
         </div>
       </div>
     </>

@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import App from "./App.tsx";
 import "bootstrap";
-import Navbar from "./Components/navbar";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import Start from "./Pages/Start.tsx";
 import Treatment from "./Pages/Treatment.tsx";
 import EmployeSelector from "./Pages/EmployeSelector.tsx";
+import Calendar from "./Pages/Calendar.tsx";
 
 const router = createBrowserRouter([
   {
@@ -27,9 +29,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/employeSelector",
+
     element: (
       <App>
         <EmployeSelector />
+      </App>
+    ),
+  },
+  {
+    path: "/calendar",
+    element: (
+      <App>
+        <Calendar />
       </App>
     ),
   },

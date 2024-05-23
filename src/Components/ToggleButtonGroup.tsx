@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 interface elementProps {
   /** The indicate which is selected */
-  selected?: boolean;
+  selected?: boolean | undefined;
   /** The id of the element */
-  id?: string;
+  id?: string | undefined;
 }
 
 interface toggleButtonProps<T extends elementProps> {

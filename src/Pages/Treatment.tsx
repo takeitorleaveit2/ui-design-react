@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ToggleButtonGroup from "../Components/ToggleButtonGroup";
+import { Form, Link } from "react-router-dom";
 
 const MyComponent: React.FC = () => {
   let [treatments, setTreatments] = useState([
@@ -19,7 +20,7 @@ const MyComponent: React.FC = () => {
   ]);
 
   return (
-    <form>
+    <Form action="/employeSelector" method="post">
       <div className="card shadow mx-auto w-max-content">
         <div className="card-body">
           <h1 className="mb-0">Vælg behandling</h1>
@@ -51,14 +52,21 @@ const MyComponent: React.FC = () => {
       </ToggleButtonGroup>
 
       <div className="container mt-3 w-max-content">
-        <button
+        {/* TODO: submit form to employeSelector */}
+        <Link
+          className="btn btn-primary rounded-pill mt-5 Start-btn"
+          to={"/employeSelector"}
+        >
+          Bestil ny tid
+        </Link>
+        {/* <button
           className="btn btn-primary rounded-pill mt-5 Start-btn"
           type="submit"
         >
           Bestil ny tid
-        </button>
+        </button> */}
       </div>
-    </form>
+    </Form>
   );
 };
 
