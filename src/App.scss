@@ -1,4 +1,5 @@
 $primary: #a9d270;
+$body-bg: #f4f4f4;
 
 @import "bootstrap/scss/bootstrap";
 
@@ -34,12 +35,19 @@ $primary: #a9d270;
   font-size: 1.5rem;
 }
 
+.navbar .offcanvas {
+  background-color: #526d42;
+}
+
 .card {
-  background-color: #f8f9facf !important;
+  background-color: #f8f9fabf !important;
   border: 1px solid #f8f9fa;
 }
 
-label.btn-primary {
-  background-color: $light;
-  border: 1px solid $gray-500;
+.navbar-nav .nav-link {
+  color: rgb(207, 207, 207);
+}
+
+.navbar-nav .nav-link.active {
+  color: white;
 }

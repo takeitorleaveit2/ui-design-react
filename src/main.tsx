@@ -7,8 +7,11 @@ import "bootstrap";
 
 import Start from "./Pages/Start.tsx";
 import Treatment from "./Pages/Treatment.tsx";
-import EmployeSelector from "./Pages/EmployeSelector.tsx";
+import EmployeeSelector from "./Pages/EmployeeSelector.tsx";
 import Calendar from "./Pages/Calendar.tsx";
+import Confirmation from "./Pages/Confirmation.tsx";
+import MyBookings from "./Pages/MyBookings.tsx";
+import Account from "./Pages/Account.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +35,7 @@ const router = createBrowserRouter([
 
     element: (
       <App>
-        <EmployeSelector />
+        <EmployeeSelector />
       </App>
     ),
   },
@@ -41,6 +44,32 @@ const router = createBrowserRouter([
     element: (
       <App>
         <Calendar />
+      </App>
+    ),
+  },
+  {
+    path: "/confirmation",
+    element: (
+      <App>
+        <Confirmation />
+      </App>
+    ),
+  },
+
+  {
+    path: "/mybookings",
+    element: (
+      <App>
+        <MyBookings />
+      </App>
+    ),
+  },
+
+  {
+    path: "/account",
+    element: (
+      <App>
+        <Account />
       </App>
     ),
   },

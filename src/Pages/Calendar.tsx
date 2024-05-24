@@ -12,18 +12,33 @@ function formatDate(date: Date) {
   return `${year}-${month}-${day}`;
 }
 
-const MyComponent: React.FC = () => {
-  const [selectedDay, setSelectedDay] = useState(new Date());
+const Calendar: React.FC = () => {
+  const [selectedDay, setSelectedDay] = useState(() => {
+    var date = new Date(Date.now());
+    return date;
+  });
+
+  console.log(selectedDay);
 
   let [treatments, setTreatments] = useState([
     {
       time: "8:00",
-      selected: true,
+      selected: false,
     },
     {
       time: "9:00",
     },
+    {
+      time: "10:00",
+    },
+    {
+      time: "11:00",
+    },
   ]);
+
+  const [selectedTreatment, setSelectedTreatment] = useState<
+    object | undefined
+  >(undefined);
 
   return (
     <Form method="post" action="/calendar">
@@ -32,58 +47,92 @@ const MyComponent: React.FC = () => {
           <h1 className="mb-0">Vælg Dato</h1>
         </div>
       </div>
-      <DatePicker
-        selected={selectedDay}
-        onChange={(date) => date && setSelectedDay(date)}
-        filterDate={(date) => {
-          const day = date.getDay();
-          const today = new Date();
-          today.setHours(0, 0, 0, 0);
-          return day !== 0 && day !== 6 && date >= today;
-        }}
-        dateFormat="dd/MM/yyyy"
-        inline
-      />
+      <div className="w-max-content mx-auto mt-2">
+        <DatePicker
+          selected={selectedDay}
+          onChange={(date) => date && setSelectedDay(date)}
+          filterDate={(date) => {
+            const day = date.getDay();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return day !== 0 && day !== 6 && date >= today;
+          }}
+          dateFormat="dd/MM/yyyy"
+          inline
+        />
+      </div>
+      <label className="d-none" htmlFor="date">
+        Vælg dato
+      </label>
       <input
         type="date"
+        id="date"
         className="d-none"
         name="date"
         value={formatDate(selectedDay)}
       />
-      <div className="card shadow mx-auto w-max-content">
-        <div className="card-body">
-          <h1 className="mb-0">
-            {selectedDay.toLocaleDateString(undefined, {
-              weekday: "long",
-              month: "numeric",
-              day: "2-digit",
-            })}
-          </h1>
+
+      <div className="row mx-auto w-max-content align-items-center">
+        <div className="col">
+          <button
+            className="btn btn-primary rounded-pill py-3 px-4"
+            onClick={(e) => {
+              e.preventDefault();
+              setSelectedDay((prevDate) => {
+                let newDate = new Date(prevDate);
+                newDate.setDate(newDate.getDate() - 1);
+                // Don't go back before today and skip weekends
+                let today = new Date();
+                today.setHours(0, 0, 0, 0);
+                while (newDate.getDay() === 0 || newDate.getDay() === 6) {
+                  newDate.setDate(newDate.getDate() - 1);
+                }
+                return newDate;
+              });
+            }}
+            disabled={selectedDay <= new Date()}
+          >
+            {"<"}
+          </button>
+        </div>
+
+        <div className="col">
+          <div
+            className="card shadow mx-auto text-center"
+            style={{ minWidth: "12rem" }}
+          >
+            <div className="card-body">
+              <h2 className="mb-0 fs-3">
+                {selectedDay.toLocaleDateString("da-dk", {
+                  weekday: "short",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div className="col">
+          <button
+            className="btn btn-primary rounded-pill py-3 px-4"
+            onClick={(e) => {
+              e.preventDefault();
+              setSelectedDay((prevDate) => {
+                let newDate = new Date(prevDate);
+                newDate.setDate(newDate.getDate() + 1);
+                // Skip weekends
+                while (newDate.getDay() === 0 || newDate.getDay() === 6) {
+                  newDate.setDate(newDate.getDate() + 1);
+                }
+                return newDate;
+              });
+            }}
+          >
+            {">"}
+          </button>
         </div>
       </div>
-      
-      <div className="Button-div">
-            
-            <p>{selectedDay.toLocaleDateString(undefined, {
-              day: "2-digit",
-            })}</p>
-            <button
-              onClick={() =>
-                setSelectedDay((prevDate) => {
-                  let newDate = new Date(prevDate);
-                  newDate.setDate(newDate.getDate() + 1);
-                  // Skip weekends
-                  while (newDate.getDay() === 0 || newDate.getDay() === 6) {
-                    newDate.setDate(newDate.getDate() + 1);
-                  }
-                  return newDate;
-                })
-              }
-            >
-              {"->"}
-            </button>
-          </div>
-        
 
       <div className="card shadow mx-auto w-max-content mt-3">
         <div className="card-body">
@@ -91,11 +140,11 @@ const MyComponent: React.FC = () => {
         </div>
       </div>
 
-      <div className="card shadow mx-auto w-max-content mt-3">
-        <div className="card-body d-grid">
+      <div className="card shadow mx-auto mt-3">
+        <div className="card-body row gx-1">
           {treatments.map((treatment, i) => {
             return (
-              <>
+              <div className="col-4" key={treatment.time}>
                 <input
                   type="radio"
                   className="btn-check"
@@ -103,27 +152,33 @@ const MyComponent: React.FC = () => {
                   id={"time-option" + i}
                   autoComplete="off"
                   defaultChecked={treatment.selected}
+                  value={treatment.time}
+                  onChange={(e) => {
+                    //console.log(e.target.value);
+                    setSelectedTreatment(treatment);
+                  }}
                 ></input>
                 <label
-                  className="btn btn-primary d-flex flex-wrap mt-1 text-start"
+                  className="btn btn-outline-primary mt-1 w-100"
                   htmlFor={"time-option" + i}
                 >
-                  {treatment.time}
+                  <div className="w-100">{treatment.time}</div>
                 </label>
-              </>
+              </div>
             );
           })}
-          
-          <div className="card">hello</div>
         </div>
       </div>
 
       <div className="container mt-3 w-max-content">
         <Link
-          to={"/calendar"}
-          className="btn btn-primary rounded-pill mt-5 Start-btn"
+          to={"/confirmation"}
+          className={
+            "btn btn-primary rounded-pill mt-5 Start-btn " +
+            (selectedTreatment ? "" : "disabled")
+          }
         >
-          Bestil ny tid
+          Fortsæt
         </Link>
         {/* TODO: submit form
         <button
@@ -138,4 +193,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default Calendar;

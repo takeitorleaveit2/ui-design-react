@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const MyComponent: React.FC = () => {
   return (
     <>
-      <div className="row">
+      <div className="row w-max-content mx-auto">
         <div className="card shadow">
           <div className="card-body">
-            <h5 className="card-title">Velkommen tilbage: Jens</h5>
+            <h1 className="card-title">Velkommen tilbage: Jens</h1>
             <p className="card-text">
               Tryk på bestil ny tid for at komme igang
             </p>
@@ -26,9 +26,9 @@ const MyComponent: React.FC = () => {
         <div className="row">
           <Link
             className="btn btn-primary rounded-pill mt-1 Start-btn"
-            to={"/bookings"}
+            to={"/mybookings"}
           >
-            Se tidligere tider
+            Mine tider
           </Link>
         </div>
         <div className="row">

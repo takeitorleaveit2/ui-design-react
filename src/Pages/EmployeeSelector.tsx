@@ -7,23 +7,30 @@ const MyComponent: React.FC = () => {
     {
       image: "/frisør.png",
       name: "Bodil",
-      selected: true,
+      selected: false,
     },
     {
       image: "/frisør.png",
       name: "Dorte",
+      selected: false,
     },
   ]);
+
+  const [selectedTreatment, setSelectedTreatment] = useState<boolean>(false);
 
   return (
     <Form method="post" action="/calendar">
       <div className="card shadow mx-auto w-max-content">
         <div className="card-body">
-          <h1 className="mb-0">Vælg behandling</h1>
+          <h1 className="mb-0">Vælg Frisør</h1>
         </div>
       </div>
 
-      <ToggleButtonGroup elements={treatments} name="behandling">
+      <ToggleButtonGroup
+        elements={treatments}
+        name="behandling"
+        setSelected={setSelectedTreatment}
+      >
         {(treatment) => (
           <div className="d-flex align-items-center">
             <img src={treatment.image} alt="Frisør" />
@@ -35,9 +42,12 @@ const MyComponent: React.FC = () => {
       <div className="container mt-3 w-max-content">
         <Link
           to={"/calendar"}
-          className="btn btn-primary rounded-pill mt-5 Start-btn"
+          className={
+            "btn btn-primary rounded-pill mt-5 Start-btn " +
+            (selectedTreatment ? "" : "disabled")
+          }
         >
-          Bestil ny tid
+          Fortsæt
         </Link>
         {/* TODO: submit form
         <button

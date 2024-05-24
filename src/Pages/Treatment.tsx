@@ -7,17 +7,56 @@ const MyComponent: React.FC = () => {
     {
       name: "Dameklip",
       price: 460,
-      selected: true,
+      selected: false,
     },
     {
-      name: "Behandling 1",
-      price: 460,
+      name: "Herreklip",
+      price: 360,
     },
     {
-      name: "Behandling 1",
-      price: 460,
+      name: "Børneklip (0-11år)",
+      price: 350,
+    },
+    {
+      name: "Permanent inkl klip",
+      price: 950,
+    },
+    {
+      name: "Farve fra",
+      price: 525,
+    },
+    {
+      name: "Reflex fra",
+      price: 525,
     },
   ]);
+
+  let [additions, setAdditions] = useState([
+    {
+      name: "Voksning af øjenbryn",
+      price: 95,
+      selected: false,
+    },
+    {
+      name: "Farvning af øjenbryn",
+      price: 90,
+    },
+    {
+      name: "Voksning og farvning af øjenbryn",
+      price: 180,
+    },
+    {
+      name: "Farvning af vipper",
+      price: 180,
+    },
+    {
+      name: "Voksning og farvning af bryn og vipper",
+      price: 280,
+    },
+  ]);
+
+  const [treatmentSelected, setTreatmentSelected] = useState<boolean>(false);
+  const [addtionSelected, setAddtionSelected] = useState<boolean>(false);
 
   return (
     <Form action="/employeSelector" method="post">
@@ -27,7 +66,12 @@ const MyComponent: React.FC = () => {
         </div>
       </div>
 
-      <ToggleButtonGroup elements={treatments} name="behandling">
+      <ToggleButtonGroup
+        elements={treatments}
+        name="behandling"
+        setSelected={setTreatmentSelected}
+        multipleChoice
+      >
         {(treatment) => (
           <>
             <div className="col">{treatment.name}</div>
@@ -42,7 +86,12 @@ const MyComponent: React.FC = () => {
         </div>
       </div>
 
-      <ToggleButtonGroup elements={treatments} name="tillæg">
+      <ToggleButtonGroup
+        elements={additions}
+        name="tillæg"
+        multipleChoice
+        setSelected={setAddtionSelected}
+      >
         {(treatment) => (
           <>
             <div className="col">{treatment.name}</div>
@@ -54,10 +103,13 @@ const MyComponent: React.FC = () => {
       <div className="container mt-3 w-max-content">
         {/* TODO: submit form to employeSelector */}
         <Link
-          className="btn btn-primary rounded-pill mt-5 Start-btn"
+          className={
+            "btn btn-primary rounded-pill mt-5 Start-btn " +
+            (addtionSelected || treatmentSelected ? "" : "disabled")
+          }
           to={"/employeSelector"}
         >
-          Bestil ny tid
+          Fortsæt
         </Link>
         {/* <button
           className="btn btn-primary rounded-pill mt-5 Start-btn"
