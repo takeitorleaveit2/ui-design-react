@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.tsx";
 import "bootstrap";
@@ -13,7 +13,7 @@ import Confirmation from "./Pages/Confirmation.tsx";
 import MyBookings from "./Pages/MyBookings.tsx";
 import Account from "./Pages/Account.tsx";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: (

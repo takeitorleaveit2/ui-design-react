@@ -9,7 +9,7 @@ $body-bg: #f4f4f4;
 
 #root {
   min-height: 100vh;
-  background-image: url("/topright.png"), url("bottomleft.png");
+  background-image: url("/topright.png"), url("/bottomleft.png");
   background-position: right top, left bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
