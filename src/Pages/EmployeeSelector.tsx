@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import ToggleButtonGroup from "../Components/ToggleButtonGroup";
 import { Form, Link } from "react-router-dom";
+import imgUrl from "../assets/frisør.png";
 
 const EmployeeSelector: React.FC = () => {
   let [treatments, setTreatments] = useState([
     {
-      image: "/frisør.png",
+      image: imgUrl,
       name: "Bodil",
       selected: false,
     },
     {
-      image: "/frisør.png",
+      image: imgUrl,
       name: "Dorte",
       selected: false,
     },

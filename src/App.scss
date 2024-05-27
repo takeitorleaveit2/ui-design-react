@@ -9,20 +9,13 @@ $body-bg: #f4f4f4;
 
 #root {
   min-height: 100vh;
-  background-image: url("/topright.png"), url("/bottomleft.png");
+  background-image: url("./assets/topright.png"),
+    url("./assets//bottomleft.png");
   background-position: right top, left bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: calc(var(--bg-sizing) * 5) calc(var(--bg-sizing) * 6),
     calc(var(--bg-sizing) * 5) calc(var(--bg-sizing) * 5);
-}
-
-.login-background {
-  background-image: url("/dorteogbodil.jpg");
-}
-
-.site-background {
-  background-image: url("/professional-hair-supplies.png");
 }
 
 .w-max-content {
