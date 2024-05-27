@@ -21,6 +21,9 @@ const MyComponent: React.FC = () => {
       name: "Permanent inkl klip",
       price: 950,
     },
+  ]);
+
+  let [additions, setAdditions] = useState([
     {
       name: "Farve fra",
       price: 525,
@@ -29,20 +32,17 @@ const MyComponent: React.FC = () => {
       name: "Reflex fra",
       price: 525,
     },
-  ]);
-
-  let [additions, setAdditions] = useState([
     {
-      name: "Voksning af øjenbryn",
+      name: "Voksning af bryn",
       price: 95,
       selected: false,
     },
     {
-      name: "Farvning af øjenbryn",
+      name: "Farvning af bryn",
       price: 90,
     },
     {
-      name: "Voksning og farvning af øjenbryn",
+      name: "Voksning og farvning af bryn",
       price: 180,
     },
     {
