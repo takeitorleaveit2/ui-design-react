@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const MyComponent: React.FC = () => {
+const Start: React.FC = () => {
   return (
     <>
       <div className="row w-max-content mx-auto">
@@ -44,4 +44,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default Start;

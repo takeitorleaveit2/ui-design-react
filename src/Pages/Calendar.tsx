@@ -18,8 +18,6 @@ const Calendar: React.FC = () => {
     return date;
   });
 
-  console.log(selectedDay);
-
   let [treatments, setTreatments] = useState([
     {
       time: "8:00",
@@ -68,6 +66,7 @@ const Calendar: React.FC = () => {
         type="date"
         id="date"
         className="d-none"
+        readOnly
         name="date"
         value={formatDate(selectedDay)}
       />

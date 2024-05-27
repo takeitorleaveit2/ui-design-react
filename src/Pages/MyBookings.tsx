@@ -5,7 +5,7 @@ import Booking from "../Components/booking";
 import { BookingStatus } from "../enum/bookingStatus";
 import { Modal } from "bootstrap";
 
-const MyComponent: React.FC = () => {
+const MyBookings: React.FC = () => {
   let [bookingConfirmation, setBookingConfirmation] = useState<any>();
 
   let [activeBookings, setActiveBookings] = useState([
@@ -70,7 +70,7 @@ const MyComponent: React.FC = () => {
         <div className="card-body">
           <div className="px-0">
             {oldBookings.map((booking, i) => {
-              return <Booking key={i} booking={booking}></Booking>;
+              return <Booking keyValue={i} booking={booking}></Booking>;
             })}
           </div>
         </div>
@@ -132,4 +132,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default MyBookings;

@@ -4,7 +4,7 @@ import { Form } from "react-router-dom";
 import { BookingStatus } from "../enum/bookingStatus";
 
 interface bookingProps {
-  key: number;
+  keyValue?: number;
   booking: {
     date: Date;
     treatments: string[];
@@ -27,7 +27,7 @@ interface bookingProps {
   }) => void;
 }
 
-export default function Booking({ key, booking, onDelete }: bookingProps) {
+export default function Booking({ keyValue, booking, onDelete }: bookingProps) {
   function renderAction() {
     switch (booking.status) {
       case BookingStatus.booked:
@@ -60,7 +60,7 @@ export default function Booking({ key, booking, onDelete }: bookingProps) {
   }
 
   return (
-    <div key={key} className="row align-items-center">
+    <div key={keyValue} className="row align-items-center">
       <div className="col">
         <div className="row align-items-center">
           <div className="col-auto">
@@ -82,7 +82,10 @@ export default function Booking({ key, booking, onDelete }: bookingProps) {
           <div className="col-auto">
             <div className="col">
               {booking.treatments.map((treatment) => (
-                <span className="badge rounded-pill text-bg-primary fs-5 ms-1">
+                <span
+                  key={treatment}
+                  className="badge rounded-pill text-bg-primary fs-5 ms-1"
+                >
                   {treatment}
                 </span>
               ))}

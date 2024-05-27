@@ -12,6 +12,8 @@ interface elementProps {
 interface toggleButtonProps<T extends elementProps> {
   /** The text to display inside the button */
   name: string;
+  /** the key */
+  keyValue?: string;
   /** The content of the button */
   elements: T[];
   /** */
@@ -21,7 +23,7 @@ interface toggleButtonProps<T extends elementProps> {
   setSelected?: (e: boolean) => void;
 }
 
-export default function MyComponent<T extends elementProps>({
+export default function ToggleButtonGroup<T extends elementProps>({
   name,
   elements,
   multipleChoice,
@@ -38,7 +40,7 @@ export default function MyComponent<T extends elementProps>({
           {elements.map((element, i) => {
             let id = element.id || name + "-option" + i;
             return (
-              <>
+              <div key={id}>
                 <input
                   type={multipleChoice ? "checkbox" : "radio"}
                   className="btn-check"
@@ -73,7 +75,7 @@ export default function MyComponent<T extends elementProps>({
                 >
                   {children(element)}
                 </label>
-              </>
+              </div>
             );
           })}
         </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ToggleButtonGroup from "../Components/ToggleButtonGroup";
 import { Form, Link } from "react-router-dom";
 
-const MyComponent: React.FC = () => {
+const EmployeeSelector: React.FC = () => {
   let [treatments, setTreatments] = useState([
     {
       image: "/frisør.png",
@@ -62,4 +62,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default EmployeeSelector;

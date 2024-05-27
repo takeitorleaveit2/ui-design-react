@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ToggleButtonGroup from "../Components/ToggleButtonGroup";
 import { Form, Link } from "react-router-dom";
 
-const MyComponent: React.FC = () => {
+const Treamtment: React.FC = () => {
   let [treatments, setTreatments] = useState([
     {
       name: "Dameklip",
@@ -67,6 +67,7 @@ const MyComponent: React.FC = () => {
       </div>
 
       <ToggleButtonGroup
+        keyValue="treatments"
         elements={treatments}
         name="behandling"
         setSelected={setTreatmentSelected}
@@ -86,6 +87,7 @@ const MyComponent: React.FC = () => {
       </div>
 
       <ToggleButtonGroup
+        keyValue="additions"
         elements={additions}
         name="tillæg"
         multipleChoice
@@ -121,4 +123,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default Treamtment;

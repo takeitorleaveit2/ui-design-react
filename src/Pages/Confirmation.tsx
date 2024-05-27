@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ToggleButtonGroup from "../Components/ToggleButtonGroup";
 import { Form, Link } from "react-router-dom";
 
-const MyComponent: React.FC = () => {
+const Confirmation: React.FC = () => {
   let [selectedDate, setSelectedDate] = useState(() => new Date(Date.now()));
   let [employee, setemployee] = useState(() => ({
     name: "Bodil",
@@ -46,7 +46,7 @@ const MyComponent: React.FC = () => {
           <div className="row">
             {services.map((service) => {
               return (
-                <div className="col-12">
+                <div key={service.name} className="col-12">
                   <div className="d-flex justify-content-between">
                     <p className="mb-0">Dameklip</p>
                     <p className="mb-0">460 kr</p>
@@ -86,4 +86,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default Confirmation;
