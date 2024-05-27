@@ -81,7 +81,7 @@ const MyComponent: React.FC = () => {
 
       <div className="card shadow mx-auto mt-5 w-max-content">
         <div className="card-body">
-          <h2 className="mb-0">Vælg tillæg</h2>
+          <h2 className="mb-0">Vælg yderligere behandling</h2>
         </div>
       </div>
 
