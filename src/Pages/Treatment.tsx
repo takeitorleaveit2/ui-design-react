@@ -70,7 +70,6 @@ const MyComponent: React.FC = () => {
         elements={treatments}
         name="behandling"
         setSelected={setTreatmentSelected}
-        multipleChoice
       >
         {(treatment) => (
           <>

@@ -55,7 +55,7 @@ const MyComponent: React.FC = () => {
               );
             })}
           </div>
-          <h2 className="mb-0 mt-4">Ydelser</h2>
+          <h2 className="mb-0 mt-4">Frisør</h2>
           <div className="row bg-white p-1 mt-1 mx-1 border rounded">
             <div className="col-12">
               <div className="d-flex align-items-center">

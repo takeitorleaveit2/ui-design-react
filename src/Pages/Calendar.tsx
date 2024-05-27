@@ -162,7 +162,7 @@ const Calendar: React.FC = () => {
                   className="btn btn-outline-primary mt-1 w-100"
                   htmlFor={"time-option" + i}
                 >
-                  <div className="w-100">{treatment.time}</div>
+                  <div className="w-100 text-black">{treatment.time}</div>
                 </label>
               </div>
             );
