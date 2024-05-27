@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import ToggleButtonGroup from "../Components/ToggleButtonGroup";
 import { Form, Link } from "react-router-dom";
+import imgUrl from "../assets/frisør.png";
 
 const Confirmation: React.FC = () => {
   let [selectedDate, setSelectedDate] = useState(() => new Date(Date.now()));
   let [employee, setemployee] = useState(() => ({
     name: "Bodil",
-    image: "/frisør.png",
+    image: imgUrl,
   }));
 
   let [services, setservices] = useState(() => [
